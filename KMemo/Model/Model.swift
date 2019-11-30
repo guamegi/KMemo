@@ -19,6 +19,6 @@ class Memo {
     
     static var dummyMemoList = [
         Memo(content: "Lorem Ipsum"),
-        Memo(content: "Subscribe + ?")
+        Memo(content: "테스트입니다. 하하핫 ^^~")
     ]
 }
