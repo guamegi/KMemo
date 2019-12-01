@@ -91,8 +91,15 @@
                                 <action selector="close:" destination="ARD-3N-X7E" id="Pyf-Py-fbR"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="EPw-AI-nRA"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="EPw-AI-nRA">
+                            <connections>
+                                <action selector="save:" destination="ARD-3N-X7E" id="dDn-i4-MPj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="memoTableView" destination="5v4-9u-gk9" id="siv-dr-6yW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gVX-Gx-fSx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
