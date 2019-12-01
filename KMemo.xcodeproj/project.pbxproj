@@ -11,6 +11,7 @@
 		A6145FC52392B906002F04A7 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145FC42392B906002F04A7 /* MemoListTableViewController.swift */; };
 		A6145FC72392C99F002F04A7 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145FC62392C99F002F04A7 /* ComposeViewController.swift */; };
 		A6145FC92393F0B3002F04A7 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145FC82393F0B3002F04A7 /* UIViewController+Alert.swift */; };
+		A6145FCB2393FF72002F04A7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6145FCA2393FF72002F04A7 /* DetailViewController.swift */; };
 		A6C5AD602390047C005E347B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5AD5F2390047C005E347B /* AppDelegate.swift */; };
 		A6C5AD622390047C005E347B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5AD612390047C005E347B /* SceneDelegate.swift */; };
 		A6C5AD672390047C005E347B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C5AD652390047C005E347B /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		A6145FC42392B906002F04A7 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		A6145FC62392C99F002F04A7 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		A6145FC82393F0B3002F04A7 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		A6145FCA2393FF72002F04A7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A6C5AD5C2390047C005E347B /* KMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6C5AD5F2390047C005E347B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6C5AD612390047C005E347B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				A6145FC42392B906002F04A7 /* MemoListTableViewController.swift */,
 				A6145FC62392C99F002F04A7 /* ComposeViewController.swift */,
 				A6145FC82393F0B3002F04A7 /* UIViewController+Alert.swift */,
+				A6145FCA2393FF72002F04A7 /* DetailViewController.swift */,
 			);
 			path = KMemo;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				A6C5AD6A2390047C005E347B /* KMemo.xcdatamodeld in Sources */,
 				A6145FC32392B5C0002F04A7 /* Model.swift in Sources */,
 				A6145FC92393F0B3002F04A7 /* UIViewController+Alert.swift in Sources */,
+				A6145FCB2393FF72002F04A7 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
