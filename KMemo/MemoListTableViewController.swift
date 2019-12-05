@@ -26,11 +26,11 @@ class MemoListTableViewController: UITableViewController {
     
     var token: NSObjectProtocol?
     
-    deinit {
-        if let token = token {
-            NotificationCenter.default.removeObserver(token)
-        }
-    }
+//    deinit {
+//        if let token = token {
+//            NotificationCenter.default.removeObserver(token)
+//        }
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
@@ -43,9 +43,9 @@ class MemoListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
-            self?.tableView.reloadData()
-        }
+//        NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
+//            self?.tableView.reloadData()
+//        }
     }
 
     // MARK: - Table view data source
