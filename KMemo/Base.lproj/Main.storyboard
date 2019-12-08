@@ -75,6 +75,9 @@
                                 <items>
                                     <barButtonItem systemItem="trash" id="OfR-hv-NzV">
                                         <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="deleteMemo:" destination="S2D-vz-bdJ" id="qdT-L0-t7z"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aVE-iJ-ApD"/>
                                     <barButtonItem systemItem="compose" id="SEq-rT-FiL">
@@ -230,6 +233,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WAm-TT-Nkl"/>
+        <segue reference="cYD-9D-Lcr"/>
     </inferredMetricsTieBreakers>
 </document>
