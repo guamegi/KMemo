@@ -100,6 +100,20 @@ class ComposeViewController: UIViewController {
         })
     }
     
+    // 뷰가 생성되기 직전에 테이블뷰에 포커스가 선택되도록
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        memoTableView.becomeFirstResponder()
+    }
+    
+    // 뷰가 사라지기 전에 포커스 해제
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        memoTableView.resignFirstResponder()
+    }
+    
 }
 
 extension ComposeViewController {
