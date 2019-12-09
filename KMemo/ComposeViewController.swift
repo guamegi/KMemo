@@ -26,7 +26,7 @@ class ComposeViewController: UIViewController {
             return
         }
         
-//        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         if let editTarget = editTarget {
             editTarget.content = memo
             DataManager.shared.saveContext()
@@ -53,6 +53,6 @@ class ComposeViewController: UIViewController {
     
 }
 
-//extension ComposeViewController {
-//    static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
-//}
+extension ComposeViewController {
+    static let newMemoDidInsert = Notification.Name(rawValue: "newMemoDidInsert")
+}

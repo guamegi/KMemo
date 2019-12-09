@@ -39,6 +39,9 @@ class DataManager {
         newMemo.content = memo
         newMemo.insertDate = Date()
         
+        // modal에서 tableView 리스트로 데이터 전달이 안 된 부분 수정
+        DataManager.shared.memoList.insert(newMemo, at: 0)
+        
         saveContext()
     }
     
