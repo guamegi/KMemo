@@ -38,6 +38,19 @@ class ComposeViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    var willShowToken: NSObjectProtocol?
+    var willHideToken: NSObjectProtocol?
+    
+    deinit {
+        if let token = willShowToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+        
+        if let token = willHideToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +62,42 @@ class ComposeViewController: UIViewController {
             navigationItem.title = "새 메모"
             memoTableView.text = ""
         }
+        
+        // 키보드 올라오면 키보드 높이만큼 하단 공백 생성
+        willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let strongSelf = self else { return }
+            
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let height = frame.cgRectValue.height
+                
+                var inset = strongSelf.memoTableView.contentInset
+                inset.bottom = height
+                strongSelf.memoTableView.contentInset = inset
+                
+                // scroll 에도 하단 여백
+                inset = strongSelf.memoTableView.scrollIndicatorInsets
+                inset.bottom = height
+                strongSelf.memoTableView.scrollIndicatorInsets = inset
+            }
+        })
+        
+        // 키보드 내려가면 하단 공백 제거
+        willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            guard let strongSelf = self else { return }
+            
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let height = frame.cgRectValue.height
+                
+                var inset = strongSelf.memoTableView.contentInset
+                inset.bottom = 0
+                strongSelf.memoTableView.contentInset = inset
+                
+                // scroll 에도 하단 여백
+                inset = strongSelf.memoTableView.scrollIndicatorInsets
+                inset.bottom = 0
+                strongSelf.memoTableView.scrollIndicatorInsets = inset
+            }
+        })
     }
     
 }
