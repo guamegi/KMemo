@@ -85,18 +85,15 @@ class ComposeViewController: UIViewController {
         willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
             guard let strongSelf = self else { return }
             
-            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-                let height = frame.cgRectValue.height
-                
-                var inset = strongSelf.memoTableView.contentInset
-                inset.bottom = 0
-                strongSelf.memoTableView.contentInset = inset
-                
-                // scroll 에도 하단 여백
-                inset = strongSelf.memoTableView.scrollIndicatorInsets
-                inset.bottom = 0
-                strongSelf.memoTableView.scrollIndicatorInsets = inset
-            }
+            var inset = strongSelf.memoTableView.contentInset
+            inset.bottom = 0
+            strongSelf.memoTableView.contentInset = inset
+            
+            // scroll 에도 하단 여백
+            inset = strongSelf.memoTableView.scrollIndicatorInsets
+            inset.bottom = 0
+            strongSelf.memoTableView.scrollIndicatorInsets = inset
+            
         })
     }
     

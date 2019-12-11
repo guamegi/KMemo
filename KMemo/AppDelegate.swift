@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 쓰레드로 메인 뷰를 열 시간을 지연
+        Thread.sleep(forTimeInterval: 1.0)
+        
         return true
     }
 
