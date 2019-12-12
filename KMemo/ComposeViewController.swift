@@ -11,6 +11,7 @@ import UIKit
 class ComposeViewController: UIViewController {
     
     var editTarget: Memo?
+    var originalMemoContent: String?
     
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -59,10 +60,13 @@ class ComposeViewController: UIViewController {
         if let memo = editTarget {
             navigationItem.title = "메모 편집"
             memoTableView.text = memo.content
+            originalMemoContent = memo.content
         } else {
             navigationItem.title = "새 메모"
             memoTableView.text = ""
         }
+        
+        memoTableView.delegate = self
         
         // 키보드 올라오면 키보드 높이만큼 하단 공백 생성
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
@@ -102,6 +106,8 @@ class ComposeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        navigationController?.presentationController?.delegate = self
+        
         memoTableView.becomeFirstResponder()
     }
     
@@ -109,9 +115,41 @@ class ComposeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        navigationController?.presentationController?.delegate = nil
+        
         memoTableView.resignFirstResponder()
     }
     
+}
+
+extension ComposeViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if let original = originalMemoContent, let edited = textView.text {
+            if #available(iOS 13.0, *) {
+                isModalInPresentation = original != edited
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+}
+
+extension ComposeViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidAttemptToDismiss(_ presentationController: UIPresentationController) {
+        let alert = UIAlertController(title: "알림", message: "편집한 내용을 저장할까요?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] (action) in
+            self?.save(action)
+        }
+        alert.addAction(okAction)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] (action) in
+            self?.close(action)
+        }
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 extension ComposeViewController {
