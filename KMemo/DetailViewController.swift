@@ -50,11 +50,22 @@ class DetailViewController: UIViewController {
             vc.editTarget = memo
         }
     }
-
+    
+    var token: NSObjectProtocol?
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidChange, object: nil, queue: OperationQueue.main) { [weak self] (noti) in
+            self?.memoTableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
